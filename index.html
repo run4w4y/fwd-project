@@ -48,6 +48,31 @@
                     </a>
                 </li>
             </ul>
+            <h2> XKCD </h2>
+            <h3 id="xkcd-text"></h3>
+            <img id="xkcd-img" />
         </main>
+        <script>
+            window.onload = async () => {
+                const xkcdImg = document.querySelector('#xkcd-img')
+                const xkcdText = document.querySelector('#xkcd-text')
+
+                const fwdApiUrl = 'https://fwd.innopolis.app/api/hw2?' + new URLSearchParams({
+                    email: 'va.makarov@innopolis.university',
+                })
+                const fwdApiRes = await fetch(fwdApiUrl)
+                const id = await fwdApiRes.json()
+
+                const xkcdApiUrl = `https://getxkcd.vercel.app/api/comic?num=${id}`
+                const xkcdApiRes = await fetch(xkcdApiUrl)
+                const xkcdComic = await xkcdApiRes.json()
+                console.log(xkcdComic)
+
+                xkcdImg.setAttribute('src', xkcdComic.img)
+                xkcdImg.setAttribute('alt', xkcdComic.alt)
+                const date = new Date(xkcdComic.year, xkcdComic.month, xkcdComic.day)
+                xkcdText.textContent = `${xkcdComic.title} - ${date.toLocaleDateString()}`
+            }
+        </script>
     </body>
 </html>
