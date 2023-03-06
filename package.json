@@ -1,0 +1,13 @@
+{
+  "name": "fwd-project",
+  "private": true,
+  "scripts": {
+    "build": "webpack --progress --mode production"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

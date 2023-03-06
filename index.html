@@ -34,17 +34,17 @@
             <ul class="socials">
                 <li>
                     <a href="https://t.me/run4w4y" id="tg-link"> 
-                        <img src="icons/gh.svg" class="socials-icon" /> 
+                        <img alt="Telegram" src="icons/tg.svg" class="socials-icon" /> 
                     </a>
                 </li>
                 <li>
                     <a href="https://github.com/run4w4y" id="gh-link">
-                        <img src="icons/tg.svg" class="socials-icon" /> 
+                        <img alt="Github" src="icons/gh.svg" class="socials-icon" /> 
                     </a>
                 </li>
                 <li>
                     <a href="mailto:add4che@gmail.com" id="email">
-                        <img src="icons/mail.svg" class="socials-icon" /> 
+                        <img alt="email" src="icons/mail.svg" class="socials-icon" /> 
                     </a>
                 </li>
             </ul>
@@ -52,27 +52,6 @@
             <h3 id="xkcd-text"></h3>
             <img id="xkcd-img" />
         </main>
-        <script>
-            window.onload = async () => {
-                const xkcdImg = document.querySelector('#xkcd-img')
-                const xkcdText = document.querySelector('#xkcd-text')
-
-                const fwdApiUrl = 'https://fwd.innopolis.app/api/hw2?' + new URLSearchParams({
-                    email: 'va.makarov@innopolis.university',
-                })
-                const fwdApiRes = await fetch(fwdApiUrl)
-                const id = await fwdApiRes.json()
-
-                const xkcdApiUrl = `https://getxkcd.vercel.app/api/comic?num=${id}`
-                const xkcdApiRes = await fetch(xkcdApiUrl)
-                const xkcdComic = await xkcdApiRes.json()
-                console.log(xkcdComic)
-
-                xkcdImg.setAttribute('src', xkcdComic.img)
-                xkcdImg.setAttribute('alt', xkcdComic.alt)
-                const date = new Date(xkcdComic.year, xkcdComic.month, xkcdComic.day)
-                xkcdText.textContent = `${xkcdComic.title} - ${date.toLocaleDateString()}`
-            }
-        </script>
+        <script src="dist/bundle.js"></script>
     </body>
 </html>
